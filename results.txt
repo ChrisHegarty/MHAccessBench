@@ -1,0 +1,701 @@
+(scroll to end for benchmark results)
+
+---
+Machine hardware and configuration details:
+
+$ sw_vers
+ProductName:	Mac OS X
+ProductVersion:	10.14.6
+BuildVersion:	18G103
+ 
+$ uname -a
+Darwin chhegar-MBP.local 18.7.0 Darwin Kernel Version 18.7.0: Tue Aug 20 16:57:14 PDT 2019; root:xnu-4903.271.2~2/RELEASE_X86_64 x86_64
+ 
+$ sysctl -n machdep.cpu.brand_string
+Intel(R) Core(TM) i7-4578U CPU @ 3.00GHz
+ 
+$ system_profiler SPHardwareDataType
+Hardware:
+
+    Hardware Overview:
+
+      Model Name: MacBook Pro
+      Model Identifier: MacBookPro11,1
+      Processor Name: Intel Core i7
+      Processor Speed: 3 GHz
+      Number of Processors: 1
+      Total Number of Cores: 2
+      L2 Cache (per Core): 256 KB
+      L3 Cache: 4 MB
+      Hyper-Threading Technology: Enabled
+      Memory: 16 GB
+      Boot ROM Version: 156.0.0.0.0
+      SMC Version (system): 2.16f68
+      Serial Number (system): C02N839VG3QT
+      Hardware UUID: D0C3DBA3-5DA5-53EC-9D10-D663BA155B26
+
+
+
+---
+
+$ /Users/chhegar/binaries/jdk-14.jdk/Contents/Home/bin/java -version
+openjdk version "14" 2020-03-17
+OpenJDK Runtime Environment (build 14+36-1461)
+OpenJDK 64-Bit Server VM (build 14+36-1461, mixed mode, sharing)
+
+
+$ /Users/chhegar/binaries/jdk-14.jdk/Contents/Home/bin/java -jar target/benchmarks.jar 
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.openjdk.jmh.util.Utils (file:/Users/chhegar/repos/jmh/target/benchmarks.jar) to field java.io.Console.cs
+WARNING: Please consider reporting this to the maintainers of org.openjdk.jmh.util.Utils
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/chhegar/binaries/jdk-14.jdk/Contents/Home/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: p.MHAccessBench.accessible_core_reflection
+
+# Run progress: 0.00% complete, ETA 00:05:30
+# Fork: 1 of 3
+# Warmup Iteration   1: 6.781 ns/op
+# Warmup Iteration   2: 12.734 ns/op
+# Warmup Iteration   3: 9.253 ns/op
+# Warmup Iteration   4: 9.208 ns/op
+# Warmup Iteration   5: 9.166 ns/op
+Iteration   1: 9.188 ns/op
+Iteration   2: 9.204 ns/op
+Iteration   3: 9.167 ns/op
+Iteration   4: 9.236 ns/op
+Iteration   5: 9.196 ns/op
+
+# Run progress: 3.03% complete, ETA 00:05:39
+# Fork: 2 of 3
+# Warmup Iteration   1: 6.674 ns/op
+# Warmup Iteration   2: 13.301 ns/op
+# Warmup Iteration   3: 9.165 ns/op
+# Warmup Iteration   4: 9.161 ns/op
+# Warmup Iteration   5: 9.228 ns/op
+Iteration   1: 9.212 ns/op
+Iteration   2: 9.169 ns/op
+Iteration   3: 9.717 ns/op
+Iteration   4: 9.785 ns/op
+Iteration   5: 9.774 ns/op
+
+# Run progress: 6.06% complete, ETA 00:05:24
+# Fork: 3 of 3
+# Warmup Iteration   1: 6.826 ns/op
+# Warmup Iteration   2: 13.376 ns/op
+# Warmup Iteration   3: 11.304 ns/op
+# Warmup Iteration   4: 10.224 ns/op
+# Warmup Iteration   5: 9.870 ns/op
+Iteration   1: 11.020 ns/op
+Iteration   2: 12.015 ns/op
+Iteration   3: 11.727 ns/op
+Iteration   4: 11.139 ns/op
+Iteration   5: 9.619 ns/op
+
+
+Result "p.MHAccessBench.accessible_core_reflection":
+  9.945 ±(99.9%) 1.076 ns/op [Average]
+  (min, avg, max) = (9.167, 9.945, 12.015), stdev = 1.007
+  CI (99.9%): [8.868, 11.021] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/chhegar/binaries/jdk-14.jdk/Contents/Home/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: p.MHAccessBench.accessible_mh_invoke
+
+# Run progress: 9.09% complete, ETA 00:05:13
+# Fork: 1 of 3
+# Warmup Iteration   1: 2.798 ns/op
+# Warmup Iteration   2: 2.856 ns/op
+# Warmup Iteration   3: 2.637 ns/op
+# Warmup Iteration   4: 2.710 ns/op
+# Warmup Iteration   5: 2.955 ns/op
+Iteration   1: 2.645 ns/op
+Iteration   2: 2.440 ns/op
+Iteration   3: 2.636 ns/op
+Iteration   4: 2.628 ns/op
+Iteration   5: 2.486 ns/op
+
+# Run progress: 12.12% complete, ETA 00:05:03
+# Fork: 2 of 3
+# Warmup Iteration   1: 2.900 ns/op
+# Warmup Iteration   2: 2.666 ns/op
+# Warmup Iteration   3: 2.513 ns/op
+# Warmup Iteration   4: 2.589 ns/op
+# Warmup Iteration   5: 2.444 ns/op
+Iteration   1: 2.535 ns/op
+Iteration   2: 2.638 ns/op
+Iteration   3: 2.845 ns/op
+Iteration   4: 3.097 ns/op
+Iteration   5: 2.700 ns/op
+
+# Run progress: 15.15% complete, ETA 00:04:52
+# Fork: 3 of 3
+# Warmup Iteration   1: 3.032 ns/op
+# Warmup Iteration   2: 2.881 ns/op
+# Warmup Iteration   3: 2.744 ns/op
+# Warmup Iteration   4: 2.533 ns/op
+# Warmup Iteration   5: 2.677 ns/op
+Iteration   1: 3.034 ns/op
+Iteration   2: 5.473 ns/op
+Iteration   3: 3.207 ns/op
+Iteration   4: 5.011 ns/op
+Iteration   5: 2.869 ns/op
+
+
+Result "p.MHAccessBench.accessible_mh_invoke":
+  3.083 ±(99.9%) 0.972 ns/op [Average]
+  (min, avg, max) = (2.440, 3.083, 5.473), stdev = 0.909
+  CI (99.9%): [2.111, 4.054] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/chhegar/binaries/jdk-14.jdk/Contents/Home/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: p.MHAccessBench.accessible_mh_invokeExact
+
+# Run progress: 18.18% complete, ETA 00:04:42
+# Fork: 1 of 3
+# Warmup Iteration   1: 2.965 ns/op
+# Warmup Iteration   2: 3.487 ns/op
+# Warmup Iteration   3: 3.990 ns/op
+# Warmup Iteration   4: 2.630 ns/op
+# Warmup Iteration   5: 3.323 ns/op
+Iteration   1: 2.810 ns/op
+Iteration   2: 3.477 ns/op
+Iteration   3: 2.511 ns/op
+Iteration   4: 2.428 ns/op
+Iteration   5: 2.425 ns/op
+
+# Run progress: 21.21% complete, ETA 00:04:31
+# Fork: 2 of 3
+# Warmup Iteration   1: 2.536 ns/op
+# Warmup Iteration   2: 2.818 ns/op
+# Warmup Iteration   3: 2.596 ns/op
+# Warmup Iteration   4: 2.511 ns/op
+# Warmup Iteration   5: 2.572 ns/op
+Iteration   1: 2.399 ns/op
+Iteration   2: 2.392 ns/op
+Iteration   3: 2.408 ns/op
+Iteration   4: 2.452 ns/op
+Iteration   5: 2.416 ns/op
+
+# Run progress: 24.24% complete, ETA 00:04:20
+# Fork: 3 of 3
+# Warmup Iteration   1: 2.725 ns/op
+# Warmup Iteration   2: 2.584 ns/op
+# Warmup Iteration   3: 2.393 ns/op
+# Warmup Iteration   4: 2.461 ns/op
+# Warmup Iteration   5: 2.657 ns/op
+Iteration   1: 2.391 ns/op
+Iteration   2: 2.384 ns/op
+Iteration   3: 2.576 ns/op
+Iteration   4: 2.481 ns/op
+Iteration   5: 2.610 ns/op
+
+
+Result "p.MHAccessBench.accessible_mh_invokeExact":
+  2.544 ±(99.9%) 0.302 ns/op [Average]
+  (min, avg, max) = (2.384, 2.544, 3.477), stdev = 0.282
+  CI (99.9%): [2.242, 2.846] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/chhegar/binaries/jdk-14.jdk/Contents/Home/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: p.MHAccessBench.accessible_unreflect_invoke
+
+# Run progress: 27.27% complete, ETA 00:04:09
+# Fork: 1 of 3
+# Warmup Iteration   1: 3.237 ns/op
+# Warmup Iteration   2: 3.050 ns/op
+# Warmup Iteration   3: 2.477 ns/op
+# Warmup Iteration   4: 2.454 ns/op
+# Warmup Iteration   5: 2.728 ns/op
+Iteration   1: 2.749 ns/op
+Iteration   2: 2.549 ns/op
+Iteration   3: 2.455 ns/op
+Iteration   4: 2.394 ns/op
+Iteration   5: 2.560 ns/op
+
+# Run progress: 30.30% complete, ETA 00:03:59
+# Fork: 2 of 3
+# Warmup Iteration   1: 2.761 ns/op
+# Warmup Iteration   2: 2.838 ns/op
+# Warmup Iteration   3: 2.455 ns/op
+# Warmup Iteration   4: 2.476 ns/op
+# Warmup Iteration   5: 3.107 ns/op
+Iteration   1: 2.573 ns/op
+Iteration   2: 2.692 ns/op
+Iteration   3: 2.391 ns/op
+Iteration   4: 2.362 ns/op
+Iteration   5: 2.388 ns/op
+
+# Run progress: 33.33% complete, ETA 00:03:48
+# Fork: 3 of 3
+# Warmup Iteration   1: 2.540 ns/op
+# Warmup Iteration   2: 2.576 ns/op
+# Warmup Iteration   3: 2.615 ns/op
+# Warmup Iteration   4: 2.923 ns/op
+# Warmup Iteration   5: 2.420 ns/op
+Iteration   1: 2.427 ns/op
+Iteration   2: 2.425 ns/op
+Iteration   3: 2.401 ns/op
+Iteration   4: 2.385 ns/op
+Iteration   5: 2.376 ns/op
+
+
+Result "p.MHAccessBench.accessible_unreflect_invoke":
+  2.475 ±(99.9%) 0.130 ns/op [Average]
+  (min, avg, max) = (2.362, 2.475, 2.749), stdev = 0.122
+  CI (99.9%): [2.345, 2.605] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/chhegar/binaries/jdk-14.jdk/Contents/Home/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: p.MHAccessBench.accessible_unreflect_invokeExact
+
+# Run progress: 36.36% complete, ETA 00:03:38
+# Fork: 1 of 3
+# Warmup Iteration   1: 2.591 ns/op
+# Warmup Iteration   2: 2.524 ns/op
+# Warmup Iteration   3: 2.359 ns/op
+# Warmup Iteration   4: 2.430 ns/op
+# Warmup Iteration   5: 2.357 ns/op
+Iteration   1: 2.377 ns/op
+Iteration   2: 2.403 ns/op
+Iteration   3: 2.365 ns/op
+Iteration   4: 2.430 ns/op
+Iteration   5: 2.386 ns/op
+
+# Run progress: 39.39% complete, ETA 00:03:27
+# Fork: 2 of 3
+# Warmup Iteration   1: 2.508 ns/op
+# Warmup Iteration   2: 2.558 ns/op
+# Warmup Iteration   3: 2.366 ns/op
+# Warmup Iteration   4: 2.391 ns/op
+# Warmup Iteration   5: 2.405 ns/op
+Iteration   1: 2.386 ns/op
+Iteration   2: 2.405 ns/op
+Iteration   3: 2.360 ns/op
+Iteration   4: 2.399 ns/op
+Iteration   5: 2.421 ns/op
+
+# Run progress: 42.42% complete, ETA 00:03:17
+# Fork: 3 of 3
+# Warmup Iteration   1: 2.523 ns/op
+# Warmup Iteration   2: 2.631 ns/op
+# Warmup Iteration   3: 2.551 ns/op
+# Warmup Iteration   4: 2.372 ns/op
+# Warmup Iteration   5: 2.352 ns/op
+Iteration   1: 2.352 ns/op
+Iteration   2: 2.357 ns/op
+Iteration   3: 2.366 ns/op
+Iteration   4: 2.340 ns/op
+Iteration   5: 2.419 ns/op
+
+
+Result "p.MHAccessBench.accessible_unreflect_invokeExact":
+  2.384 ±(99.9%) 0.030 ns/op [Average]
+  (min, avg, max) = (2.340, 2.384, 2.430), stdev = 0.028
+  CI (99.9%): [2.355, 2.414] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/chhegar/binaries/jdk-14.jdk/Contents/Home/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: p.MHAccessBench.inaccessible_core_reflection
+
+# Run progress: 45.45% complete, ETA 00:03:07
+# Fork: 1 of 3
+# Warmup Iteration   1: 6.708 ns/op
+# Warmup Iteration   2: 13.932 ns/op
+# Warmup Iteration   3: 9.279 ns/op
+# Warmup Iteration   4: 9.003 ns/op
+# Warmup Iteration   5: 10.416 ns/op
+Iteration   1: 9.579 ns/op
+Iteration   2: 9.057 ns/op
+Iteration   3: 9.020 ns/op
+Iteration   4: 10.413 ns/op
+Iteration   5: 9.414 ns/op
+
+# Run progress: 48.48% complete, ETA 00:02:56
+# Fork: 2 of 3
+# Warmup Iteration   1: 6.880 ns/op
+# Warmup Iteration   2: 12.382 ns/op
+# Warmup Iteration   3: 9.398 ns/op
+# Warmup Iteration   4: 9.069 ns/op
+# Warmup Iteration   5: 9.609 ns/op
+Iteration   1: 9.794 ns/op
+Iteration   2: 9.268 ns/op
+Iteration   3: 9.251 ns/op
+Iteration   4: 11.146 ns/op
+Iteration   5: 9.687 ns/op
+
+# Run progress: 51.52% complete, ETA 00:02:46
+# Fork: 3 of 3
+# Warmup Iteration   1: 6.896 ns/op
+# Warmup Iteration   2: 12.789 ns/op
+# Warmup Iteration   3: 10.415 ns/op
+# Warmup Iteration   4: 9.469 ns/op
+# Warmup Iteration   5: 9.740 ns/op
+Iteration   1: 9.318 ns/op
+Iteration   2: 9.702 ns/op
+Iteration   3: 9.527 ns/op
+Iteration   4: 9.924 ns/op
+Iteration   5: 10.395 ns/op
+
+
+Result "p.MHAccessBench.inaccessible_core_reflection":
+  9.700 ±(99.9%) 0.618 ns/op [Average]
+  (min, avg, max) = (9.020, 9.700, 11.146), stdev = 0.578
+  CI (99.9%): [9.082, 10.318] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/chhegar/binaries/jdk-14.jdk/Contents/Home/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: p.MHAccessBench.inaccessible_mh_invoke
+
+# Run progress: 54.55% complete, ETA 00:02:35
+# Fork: 1 of 3
+# Warmup Iteration   1: 11.040 ns/op
+# Warmup Iteration   2: 9.101 ns/op
+# Warmup Iteration   3: 9.600 ns/op
+# Warmup Iteration   4: 8.999 ns/op
+# Warmup Iteration   5: 8.508 ns/op
+Iteration   1: 9.168 ns/op
+Iteration   2: 8.546 ns/op
+Iteration   3: 8.464 ns/op
+Iteration   4: 8.224 ns/op
+Iteration   5: 8.198 ns/op
+
+# Run progress: 57.58% complete, ETA 00:02:25
+# Fork: 2 of 3
+# Warmup Iteration   1: 9.483 ns/op
+# Warmup Iteration   2: 9.506 ns/op
+# Warmup Iteration   3: 9.637 ns/op
+# Warmup Iteration   4: 9.259 ns/op
+# Warmup Iteration   5: 9.071 ns/op
+Iteration   1: 8.672 ns/op
+Iteration   2: 8.355 ns/op
+Iteration   3: 7.956 ns/op
+Iteration   4: 8.292 ns/op
+Iteration   5: 9.921 ns/op
+
+# Run progress: 60.61% complete, ETA 00:02:15
+# Fork: 3 of 3
+# Warmup Iteration   1: 9.806 ns/op
+# Warmup Iteration   2: 9.115 ns/op
+# Warmup Iteration   3: 13.549 ns/op
+# Warmup Iteration   4: 11.181 ns/op
+# Warmup Iteration   5: 9.014 ns/op
+Iteration   1: 8.901 ns/op
+Iteration   2: 8.871 ns/op
+Iteration   3: 9.013 ns/op
+Iteration   4: 9.012 ns/op
+Iteration   5: 9.076 ns/op
+
+
+Result "p.MHAccessBench.inaccessible_mh_invoke":
+  8.711 ±(99.9%) 0.535 ns/op [Average]
+  (min, avg, max) = (7.956, 8.711, 9.921), stdev = 0.501
+  CI (99.9%): [8.176, 9.247] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/chhegar/binaries/jdk-14.jdk/Contents/Home/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: p.MHAccessBench.inaccessible_mh_invokeExact
+
+# Run progress: 63.64% complete, ETA 00:02:04
+# Fork: 1 of 3
+# Warmup Iteration   1: 2.525 ns/op
+# Warmup Iteration   2: 2.522 ns/op
+# Warmup Iteration   3: 2.376 ns/op
+# Warmup Iteration   4: 2.369 ns/op
+# Warmup Iteration   5: 2.358 ns/op
+Iteration   1: 2.363 ns/op
+Iteration   2: 2.376 ns/op
+Iteration   3: 2.345 ns/op
+Iteration   4: 2.366 ns/op
+Iteration   5: 2.359 ns/op
+
+# Run progress: 66.67% complete, ETA 00:01:54
+# Fork: 2 of 3
+# Warmup Iteration   1: 2.485 ns/op
+# Warmup Iteration   2: 2.514 ns/op
+# Warmup Iteration   3: 2.353 ns/op
+# Warmup Iteration   4: 2.349 ns/op
+# Warmup Iteration   5: 2.350 ns/op
+Iteration   1: 2.360 ns/op
+Iteration   2: 2.421 ns/op
+Iteration   3: 2.372 ns/op
+Iteration   4: 2.396 ns/op
+Iteration   5: 2.349 ns/op
+
+# Run progress: 69.70% complete, ETA 00:01:43
+# Fork: 3 of 3
+# Warmup Iteration   1: 2.480 ns/op
+# Warmup Iteration   2: 2.517 ns/op
+# Warmup Iteration   3: 2.433 ns/op
+# Warmup Iteration   4: 2.341 ns/op
+# Warmup Iteration   5: 2.350 ns/op
+Iteration   1: 2.344 ns/op
+Iteration   2: 2.347 ns/op
+Iteration   3: 2.356 ns/op
+Iteration   4: 2.342 ns/op
+Iteration   5: 2.356 ns/op
+
+
+Result "p.MHAccessBench.inaccessible_mh_invokeExact":
+  2.363 ±(99.9%) 0.023 ns/op [Average]
+  (min, avg, max) = (2.342, 2.363, 2.421), stdev = 0.021
+  CI (99.9%): [2.341, 2.386] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/chhegar/binaries/jdk-14.jdk/Contents/Home/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: p.MHAccessBench.inaccessible_unreflect_invoke
+
+# Run progress: 72.73% complete, ETA 00:01:33
+# Fork: 1 of 3
+# Warmup Iteration   1: 9.812 ns/op
+# Warmup Iteration   2: 9.037 ns/op
+# Warmup Iteration   3: 8.466 ns/op
+# Warmup Iteration   4: 11.576 ns/op
+# Warmup Iteration   5: 12.737 ns/op
+Iteration   1: 8.043 ns/op
+Iteration   2: 7.693 ns/op
+Iteration   3: 7.633 ns/op
+Iteration   4: 10.335 ns/op
+Iteration   5: 14.251 ns/op
+
+# Run progress: 75.76% complete, ETA 00:01:23
+# Fork: 2 of 3
+# Warmup Iteration   1: 14.946 ns/op
+# Warmup Iteration   2: 12.865 ns/op
+# Warmup Iteration   3: 10.552 ns/op
+# Warmup Iteration   4: 8.016 ns/op
+# Warmup Iteration   5: 7.913 ns/op
+Iteration   1: 8.061 ns/op
+Iteration   2: 9.925 ns/op
+Iteration   3: 8.769 ns/op
+Iteration   4: 9.883 ns/op
+Iteration   5: 10.784 ns/op
+
+# Run progress: 78.79% complete, ETA 00:01:12
+# Fork: 3 of 3
+# Warmup Iteration   1: 11.374 ns/op
+# Warmup Iteration   2: 8.491 ns/op
+# Warmup Iteration   3: 7.644 ns/op
+# Warmup Iteration   4: 7.599 ns/op
+# Warmup Iteration   5: 8.993 ns/op
+Iteration   1: 7.711 ns/op
+Iteration   2: 7.686 ns/op
+Iteration   3: 7.600 ns/op
+Iteration   4: 7.825 ns/op
+Iteration   5: 7.667 ns/op
+
+
+Result "p.MHAccessBench.inaccessible_unreflect_invoke":
+  8.924 ±(99.9%) 1.980 ns/op [Average]
+  (min, avg, max) = (7.600, 8.924, 14.251), stdev = 1.852
+  CI (99.9%): [6.944, 10.904] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/chhegar/binaries/jdk-14.jdk/Contents/Home/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: p.MHAccessBench.inaccessible_unreflect_invokeExact
+
+# Run progress: 81.82% complete, ETA 00:01:02
+# Fork: 1 of 3
+# Warmup Iteration   1: 2.467 ns/op
+# Warmup Iteration   2: 2.532 ns/op
+# Warmup Iteration   3: 2.473 ns/op
+# Warmup Iteration   4: 2.502 ns/op
+# Warmup Iteration   5: 2.413 ns/op
+Iteration   1: 2.432 ns/op
+Iteration   2: 2.383 ns/op
+Iteration   3: 2.377 ns/op
+Iteration   4: 2.386 ns/op
+Iteration   5: 2.359 ns/op
+
+# Run progress: 84.85% complete, ETA 00:00:51
+# Fork: 2 of 3
+# Warmup Iteration   1: 2.600 ns/op
+# Warmup Iteration   2: 2.611 ns/op
+# Warmup Iteration   3: 2.384 ns/op
+# Warmup Iteration   4: 2.382 ns/op
+# Warmup Iteration   5: 2.375 ns/op
+Iteration   1: 2.453 ns/op
+Iteration   2: 2.371 ns/op
+Iteration   3: 2.354 ns/op
+Iteration   4: 2.359 ns/op
+Iteration   5: 2.341 ns/op
+
+# Run progress: 87.88% complete, ETA 00:00:41
+# Fork: 3 of 3
+# Warmup Iteration   1: 2.460 ns/op
+# Warmup Iteration   2: 2.769 ns/op
+# Warmup Iteration   3: 3.420 ns/op
+# Warmup Iteration   4: 4.477 ns/op
+# Warmup Iteration   5: 3.540 ns/op
+Iteration   1: 2.335 ns/op
+Iteration   2: 2.694 ns/op
+Iteration   3: 3.408 ns/op
+Iteration   4: 3.199 ns/op
+Iteration   5: 3.399 ns/op
+
+
+Result "p.MHAccessBench.inaccessible_unreflect_invokeExact":
+  2.590 ±(99.9%) 0.425 ns/op [Average]
+  (min, avg, max) = (2.335, 2.590, 3.408), stdev = 0.398
+  CI (99.9%): [2.165, 3.015] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/chhegar/binaries/jdk-14.jdk/Contents/Home/bin/java
+# VM options: <none>
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: p.MHAccessBench.plainAccess
+
+# Run progress: 90.91% complete, ETA 00:00:31
+# Fork: 1 of 3
+# Warmup Iteration   1: 3.797 ns/op
+# Warmup Iteration   2: 4.189 ns/op
+# Warmup Iteration   3: 2.366 ns/op
+# Warmup Iteration   4: 2.500 ns/op
+# Warmup Iteration   5: 3.283 ns/op
+Iteration   1: 2.534 ns/op
+Iteration   2: 2.773 ns/op
+Iteration   3: 2.622 ns/op
+Iteration   4: 2.392 ns/op
+Iteration   5: 2.357 ns/op
+
+# Run progress: 93.94% complete, ETA 00:00:20
+# Fork: 2 of 3
+# Warmup Iteration   1: 2.664 ns/op
+# Warmup Iteration   2: 3.423 ns/op
+# Warmup Iteration   3: 3.519 ns/op
+# Warmup Iteration   4: 2.351 ns/op
+# Warmup Iteration   5: 2.366 ns/op
+Iteration   1: 2.382 ns/op
+Iteration   2: 2.343 ns/op
+Iteration   3: 2.674 ns/op
+Iteration   4: 3.196 ns/op
+Iteration   5: 2.409 ns/op
+
+# Run progress: 96.97% complete, ETA 00:00:10
+# Fork: 3 of 3
+# Warmup Iteration   1: 3.827 ns/op
+# Warmup Iteration   2: 3.989 ns/op
+# Warmup Iteration   3: 2.536 ns/op
+# Warmup Iteration   4: 2.404 ns/op
+# Warmup Iteration   5: 3.264 ns/op
+Iteration   1: 3.272 ns/op
+Iteration   2: 2.560 ns/op
+Iteration   3: 2.426 ns/op
+Iteration   4: 2.389 ns/op
+Iteration   5: 2.485 ns/op
+
+
+Result "p.MHAccessBench.plainAccess":
+  2.588 ±(99.9%) 0.311 ns/op [Average]
+  (min, avg, max) = (2.343, 2.588, 3.272), stdev = 0.291
+  CI (99.9%): [2.276, 2.899] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:05:43
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                         Mode  Cnt  Score   Error  Units
+MHAccessBench.accessible_core_reflection          avgt   15  9.945 ± 1.076  ns/op
+MHAccessBench.accessible_mh_invoke                avgt   15  3.083 ± 0.972  ns/op
+MHAccessBench.accessible_mh_invokeExact           avgt   15  2.544 ± 0.302  ns/op
+MHAccessBench.accessible_unreflect_invoke         avgt   15  2.475 ± 0.130  ns/op
+MHAccessBench.accessible_unreflect_invokeExact    avgt   15  2.384 ± 0.030  ns/op
+MHAccessBench.inaccessible_core_reflection        avgt   15  9.700 ± 0.618  ns/op
+MHAccessBench.inaccessible_mh_invoke              avgt   15  8.711 ± 0.535  ns/op
+MHAccessBench.inaccessible_mh_invokeExact         avgt   15  2.363 ± 0.023  ns/op
+MHAccessBench.inaccessible_unreflect_invoke       avgt   15  8.924 ± 1.980  ns/op
+MHAccessBench.inaccessible_unreflect_invokeExact  avgt   15  2.590 ± 0.425  ns/op
+MHAccessBench.plainAccess                         avgt   15  2.588 ± 0.311  ns/op
+
+
