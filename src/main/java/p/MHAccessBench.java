@@ -63,10 +63,6 @@ public class MHAccessBench {
         org.openjdk.jmh.Main.main(args);
     }
 
-    public interface IntBox {
-        int getInt();
-    }
-
     private static final IntBox INT_BOX = Foo.intBoxOf(54); // instance of IntBoxImpl
 
     // ACCESSIBLE/INACCESSIBLE refers to the parameter type(s) and/or return type in the method declaration

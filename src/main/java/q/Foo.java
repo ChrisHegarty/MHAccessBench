@@ -23,9 +23,15 @@
 
 package q;
 
-import p.MHAccessBench.IntBox;
+import p.IntBox;
 
 public class Foo {
+
+    public final IntBox INT_BOX = new IntBoxImpl(45);
+
+    public static final Impl ofImpl() {
+        return new Impl();
+    }
 
     /** Returns an `IntBoxImpl` with the given value, x. */
     public static IntBoxImpl intBoxOf(int x) {
@@ -44,6 +50,10 @@ public class Foo {
     }
 
     // --- private
+
+    private static class Impl extends Foo {
+        public final IntBoxImpl INT_BOX_IMPL = new IntBoxImpl(46);
+    }
 
     private final static class IntBoxImpl implements IntBox {
         private final int x;
